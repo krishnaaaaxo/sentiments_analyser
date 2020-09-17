@@ -1,4 +1,4 @@
-# Detect Sentiments for Stocks
+# Stock Ticker Information & Sentiments
 
 > This is meant for my experimenting and educational purposes :)
 
