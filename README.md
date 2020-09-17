@@ -1,8 +1,8 @@
-# Stock Ticker Information & Sentiments
+# Stock Symbol Information & Sentiments
 
 > This is meant for my experimenting and educational purposes :)
 
-In this experiment, I will attempt to analyse stock tickers using sentiments garnered from the news, sentiments on Twitter, and fetch the sentiments analysed by AWS Comprehend. The app will fetch buy recommendations from Yahoo Finance as well.
+In this experiment, I will attempt to analyse stock ticker symbols using sentiments garnered from the news, sentiments on Twitter, and fetch the sentiments analysed by AWS Comprehend. The app will fetch buy recommendations from Yahoo Finance as well.
 
 This might provide a quick and basic way to display stock information at one's fingertips. [Will attempt to improve this in the near future]
 
@@ -15,19 +15,19 @@ This might provide a quick and basic way to display stock information at one's f
 
 ## Get News & Tweets
 
-**`getTickerNews()`**
+**`getSymbolNews()`**
 
-This endpoint will get the news and tweets regarding a certain stock ticker. The `fetched_news` will do a web scrape of www.finviz.com website for news and the links to the article, while tweets will return all the recent tweets within today and the previous day.
+This endpoint will get the news and tweets regarding a certain stock symbol. The `fetched_news` will do a web scrape of www.finviz.com website for news and the links to the article, while tweets will return all the recent tweets within today and the previous day.
 
 **Endpoint**
 
-**[POST]** `/sentiments/ticker/get_news`
+**[POST]** `/sentiments/symbol/get_news`
 
 **Parameters**
 
 ```
 {
-    "ticker": "AAPL"
+    "symbol": "AAPL"
 }
 ```
 
@@ -55,11 +55,11 @@ This endpoint will get the news and tweets regarding a certain stock ticker. The
 
 **`getSentiment()`**
 
-This endpoint will get the sentiments analysed by AWS Comprehend. It will analyse the news fetched from the above function `getTickerNews()`, and return the sentiments analysed.
+This endpoint will get the sentiments analysed by AWS Comprehend. It will analyse the news fetched from the above function `getSymbolNews()`, and return the sentiments analysed.
 
 **Endpoint**
 
-**[POST]** `/sentiments/ticker/get_sentiment`
+**[POST]** `/sentiments/symbol/get_sentiment`
 
 **Parameters**
 
@@ -94,19 +94,19 @@ This endpoint will get the sentiments analysed by AWS Comprehend. It will analys
 
 ## Get Recommendations
 
-**`getTickerRecommendation()`**
+**`getSymbolRecommendation()`**
 
-This will call Yahoo Finance's API to get the buy recommendations for a particular stock ticker.
+This will call Yahoo Finance's API to get the buy recommendations for a particular stock symbol.
 
 **Endpoint**
 
-**[POST]** `/sentiments/ticker/get_recommendation`
+**[POST]** `/sentiments/symbol/get_recommendation`
 
 **Parameters**
 
 ```
 {
-    "ticker": "GOOGL"
+    "symbol": "GOOGL"
 }
 ```
 

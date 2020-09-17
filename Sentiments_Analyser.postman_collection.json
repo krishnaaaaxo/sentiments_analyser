@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "ad8bd133-8599-4cc2-af3d-d1920f449e1d",
+		"name": "Sentiments Analyser",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Symbol Recommendation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"symbol\": \"GOOGL\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/sentiments/symbol/get_recommendation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"sentiments",
+						"symbol",
+						"get_recommendation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Symbol Sentiment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fetched_news\": {\n        \"2 Tech Stocks That Are Thriving Despite the Coronavirus\": \"https://www.fool.com/investing/2020/09/05/2-tech-stocks-thriving-despite-coronavirus/?source=eptyholnk0000202&utm_source=yahoo-host&utm_medium=feed&utm_campaign=article\",\n        \"3 Reasons Peloton Stock Should Keep Spinning Up for Investors\": \"https://www.fool.com/investing/2020/09/05/3-reasons-peloton-stock-should-keep-spinning-up-fo/?source=eptyholnk0000202&utm_source=yahoo-host&utm_medium=feed&utm_campaign=article\",\n        \"3 Top Retail Apocalypse-Proof Stocks to Watch in September\": \"https://www.fool.com/investing/2020/09/05/3-top-retail-apocalypse-proof-stocks-to-watch-in-s/?source=eptyholnk0000202&utm_source=yahoo-host&utm_medium=feed&utm_campaign=article\",\n        \"3 Warren Buffett Stocks Worth Buying Now\": \"https://www.fool.com/investing/2020/09/05/3-warren-buffett-stocks-worth-buying-now/?source=eptyholnk0000202&utm_source=yahoo-host&utm_medium=feed&utm_campaign=article\",\n        \"Amazon.com bans foreign sales of seeds in U.S. amid mystery packages\": \"https://finance.yahoo.com/news/amazon-com-bans-foreign-sales-001523883.html\",\n        \"Ignore FAANG Stocks, Buy These Small Cap Tech Stocks Instead\": \"https://www.fool.com/investing/2020/09/05/ignore-faang-stocks-buy-these-small-cap-tech-stock/?source=eptyholnk0000202&utm_source=yahoo-host&utm_medium=feed&utm_campaign=article\",\n        \"Lands' End Will Survive Retail Chaos\": \"https://www.fool.com/investing/2020/09/05/lands-end-will-survive-retail-chaos/?source=eptyholnk0000202&utm_source=yahoo-host&utm_medium=feed&utm_campaign=article\",\n        \"Tech Stocks Finally Got Crushed. Why the Stock Market Is on Shaky Ground.\": \"https://www.barrons.com/articles/the-stock-markets-august-gains-turned-to-september-pain-what-happens-next-51599266176?siteid=yhoof2\",\n        \"The 1 Stock I'd Buy Right Now\": \"https://www.fool.com/investing/2020/09/06/the-1-stock-id-buy-right-now/?source=eptyholnk0000202&utm_source=yahoo-host&utm_medium=feed&utm_campaign=article\",\n        \"US Backs Microsofts $10B JEDI Cloud Award; Wedbush Says JEDI Game Changer\": \"https://finance.yahoo.com/news/us-backs-microsoft-10b-jedi-063415615.html\"\n    },\n    \"tweets\": [\n        \"@Viv1821: @UncleRico77 I’ll give you a free one. Short #AAPL\",\n        \"@cth1155yahoo: Apple will rebound after 4/1 stock split - #AAPL chart https://t.co/6LwcLEyLSC\",\n        \"@JanesMike: “@Apple's iPhone sales have lagged in India for years. It’s only now unleashing its branding firepower” via… https://t.co/9JzY3PVSlP\",\n        \"@stockkingoption: 🍏 $AAPL Get in the game with our entry and exit signals #AAPL\\n-\\n💰 56% Profit\\n-\\n💵 Join our Gold Trading Room. \\n-\\nLin… https://t.co/AYrrrdIUjv\",\n        \"@elliottwaves: #Free Trial available at  https://t.co/x2kmaKA6Ui #SPY #GDX #XME #XLE #IYR #AAPL #FB #AMZN #NFLX #GOOGL #MSFT #NVDA… https://t.co/z2ECed1rKw\",\n        \"@elliottwaves: If you #trade #stocks like #FB, #AAPL, #AMZN, #AMD, #GOOGL, #MSFT #TSLA &amp; #ETF's like #SPY, #GDX #IYR, #Indices lik… https://t.co/luk2BasHeD\",\n        \"@elliottwaves: Group 3 Stocks &amp; ETF charts are updated in 4 time frames, weekly, daily , 4 &amp; 1 hour for members viewing… https://t.co/774SpK1FeF\",\n        \"@CitygirlJ: How I Blew Up Trading APPLE 🍎 OPTIONS \\n\\nhttps://t.co/hwOOfzoIu5\\n\\nNot fun.  Good luck all traders.  Support my adver… https://t.co/7p7vhiDlG8\",\n        \"@SpiderMan_3s: $SPY\\n\\nAs i have mentioned b4\\n\\nIf AAPL goes below $100 \\n—it will be a gift \\n\\nI will buy some\\nAdd it in long term por… https://t.co/rDS0IsyLSy\",\n        \"@XtradesOfficial: A little late to post, but still... #BABA #AAPL #NFLX #MSFT #BYND #ROKU https://t.co/7a8XPABfAp\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/sentiments/symbol/get_sentiment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"sentiments",
+						"symbol",
+						"get_sentiment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Symbol News",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"symbol\": \"AAPL\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/sentiments/symbol/get_news",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"sentiments",
+						"symbol",
+						"get_news"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

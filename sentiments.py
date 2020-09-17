@@ -11,8 +11,8 @@ from itertools import islice
 import tweepy as tw
 from datetime import datetime, timedelta
 
-FINWIZ_URL = "https://finviz.com/quote.ashx?t=" # + ticker
-YAHOO_API_URL = "https://yahoo-finance15.p.rapidapi.com/api/yahoo/qu/quote/" # + ticker
+FINWIZ_URL = "https://finviz.com/quote.ashx?t=" # + symbol
+YAHOO_API_URL = "https://yahoo-finance15.p.rapidapi.com/api/yahoo/qu/quote/" # + symbol
 HEADERS = {"User-Agent": "Mozilla/5"}
 RAPIDAPI_HEADERS = {
     'x-rapidapi-host': os.environ["x_rapidapi_host"],
@@ -49,14 +49,14 @@ def errorHandler(e):
 def ratelimit_handler(e):
     return jsonify({"type": "error", "status": 429, "message": "Rate limit exceeded %s" % e.description}), 429
 
-@app.route("/sentiments/ticker/get_information", methods=["POST"])
-def getTickerInformation():
+@app.route("/sentiments/symbol/get_information", methods=["POST"])
+def getSymbolInformation():
     try:
         data = request.get_json()
-        ticker = data["ticker"]
+        symbol = data["symbol"]
 
-        data_url = YAHOO_API_URL + ticker + "/financial-data"
-        profile_url = YAHOO_API_URL + ticker + "/asset-profile"
+        data_url = YAHOO_API_URL + symbol + "/financial-data"
+        profile_url = YAHOO_API_URL + symbol + "/asset-profile"
 
         info = requests.get(data_url, headers=RAPIDAPI_HEADERS)
         profile = requests.get(profile_url, headers=RAPIDAPI_HEADERS)
@@ -65,15 +65,15 @@ def getTickerInformation():
     except Exception as e:
         return jsonify({"type": "error", "message": str(e)}), 500
 
-@app.route("/sentiments/ticker/get_recommendation", methods=["POST"])
-def getTickerRecommendation():
+@app.route("/sentiments/symbol/get_recommendation", methods=["POST"])
+def getSymbolRecommendation():
     try:
         data = request.get_json()
-        ticker = data["ticker"]
+        symbol = data["symbol"]
 
         weightages = {"strongBuy": 0.2, "buy": 0.4, "hold": 0.6, "sell": 0.8, "strongSell": 1}
 
-        api_url = YAHOO_API_URL + ticker + "/recommendation-trend"
+        api_url = YAHOO_API_URL + symbol + "/recommendation-trend"
 
         response = requests.get(api_url, headers=RAPIDAPI_HEADERS).json()
 
@@ -92,14 +92,14 @@ def getTickerRecommendation():
     except Exception as e:
         return jsonify({"type": "error", "message": str(e)}), 500
 
-@app.route("/sentiments/ticker/get_news", methods=["POST"])
-def getTickerNews():
+@app.route("/sentiments/symbol/get_news", methods=["POST"])
+def getSymbolNews():
     try:
         data = request.get_json()
-        ticker = data["ticker"]
+        symbol = data["symbol"]
         tweets = []
 
-        new_search = ticker + ' "#' + ticker + '" -filter:retweets'
+        new_search = symbol + ' "#' + symbol + '" -filter:retweets'
 
         tweets = tw.Cursor(twitter_api.search,
                    q=new_search,
@@ -111,7 +111,7 @@ def getTickerNews():
         for tweet in tweets:
             all_tweets.append("@" + tweet.user.screen_name + ": " + tweet.text)
 
-        source = requests.get(FINWIZ_URL + ticker, headers=HEADERS).text
+        source = requests.get(FINWIZ_URL + symbol, headers=HEADERS).text
         html = BeautifulSoup(source, "html.parser")
 
         news_table = html.find(id="news-table")
@@ -132,7 +132,7 @@ def getTickerNews():
 
     return jsonify({"type": "success", "fetched_news": news, "tweets": all_tweets}), 200
 
-@app.route("/sentiments/ticker/get_sentiment", methods=["POST"])
+@app.route("/sentiments/symbol/get_sentiment", methods=["POST"])
 def getSentiment():
     sentiment_count = {"NEUTRAL": 0, "POSITIVE": 0, "NEGATIVE": 0}
     key_phrases = []
