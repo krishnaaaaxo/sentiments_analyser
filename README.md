@@ -125,3 +125,7 @@ This will call Yahoo Finance's API to get the buy recommendations for a particul
     "type": "success"
 }
 ```
+
+## Installation instructions
+
+You need to provide the API keys in `run_app.sh`, then just run `install.sh`, and `run_app.sh`!
