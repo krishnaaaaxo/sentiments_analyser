@@ -2,9 +2,9 @@
 
 > This is meant for my experimenting and educational purposes :)
 
-In this experiment, I will attempt to analyse stock tickers using sentiments garnered from the news, sentiments on Twitter, as well as buy recommendations from Yahoo Finance.
+In this experiment, I will attempt to analyse stock tickers using sentiments garnered from the news, sentiments on Twitter, and fetch the sentiments analysed by AWS Comprehend. The app will fetch buy recommendations from Yahoo Finance as well.
 
-This might provide a quick and basic way to display information at one's fingertips.
+This might provide a quick and basic way to display stock information at one's fingertips. [Will attempt to improve this in the near future]
 
 ## APIs used
 
@@ -17,7 +17,7 @@ This might provide a quick and basic way to display information at one's fingert
 
 **`getTickerNews()`**
 
-This endpoint will get the news and tweets regarding a certain stock ticker. The `fetched_news` will do a HTML scrape of www.finviz.com website for news and the links to the article, while tweets will return all the recent tweets within today and the previous day.
+This endpoint will get the news and tweets regarding a certain stock ticker. The `fetched_news` will do a web scrape of www.finviz.com website for news and the links to the article, while tweets will return all the recent tweets within today and the previous day.
 
 **Endpoint**
 
